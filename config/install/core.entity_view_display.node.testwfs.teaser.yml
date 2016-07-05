@@ -1,0 +1,26 @@
+uuid: ece683a1-7c58-4ac5-b4ad-93b18fdf86e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.testwfs.body
+    - node.type.testwfs
+  module:
+    - text
+    - user
+id: node.testwfs.teaser
+targetEntityType: node
+bundle: testwfs
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

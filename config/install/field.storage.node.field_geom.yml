@@ -1,0 +1,19 @@
+uuid: b6eedbef-146c-4f37-ab2a-816d7f3acf63
+langcode: en
+status: true
+dependencies:
+  module:
+    - geofield
+    - node
+id: node.field_geom
+field_name: field_geom
+entity_type: node
+type: geofield
+settings: {  }
+module: geofield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

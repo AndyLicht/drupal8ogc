@@ -1,0 +1,17 @@
+uuid: c4e35631-c600-46ae-921a-af71f8267444
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.wfsgetcapabilities
+  module:
+    - user
+id: node.wfsgetcapabilities.teaser
+targetEntityType: node
+bundle: wfsgetcapabilities
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden: {  }

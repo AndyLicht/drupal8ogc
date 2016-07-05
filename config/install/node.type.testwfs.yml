@@ -1,0 +1,17 @@
+uuid: 90de36f0-8c7b-4037-9a70-b328e8866f83
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: TESTWFS
+type: testwfs
+description: 'Ein erster Versuch einen WFS zu generieren'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
