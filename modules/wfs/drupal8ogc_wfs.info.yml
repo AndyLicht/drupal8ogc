@@ -1,0 +1,8 @@
+name: Drupal8OGC WFS
+description: OGC WFS Services
+package: Custom
+type: module
+version: 0.1
+core: 8.x
+dependencies:
+    - drupal8ogc

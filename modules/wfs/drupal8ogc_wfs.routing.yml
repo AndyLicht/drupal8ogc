@@ -1,0 +1,15 @@
+drupal8ogc_wfs_forms_settings:
+  path: '/drupal8ogc_wfs/settings'
+  defaults:
+    _form: 'Drupal\drupal8ogc_wfs\Controller\AdminForm'
+    _title: 'Configure Drupal8 OGC Settings WFS'
+  requirements:
+    _permission: 'access content'
+drupal8ogc_wfs:
+  path: '/drupal8ogc/wfs'
+  defaults:
+    _controller: 'Drupal\drupal8ogc_wfs\Controller\WFS::buildContent'
+    _format: 'application/xml'
+    _name: 'Husten'
+  requirements:
+    _permission: 'access content'

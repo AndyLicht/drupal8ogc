@@ -1,0 +1,20 @@
+uuid: f54d807a-3b06-4b8e-9ce5-7bb07e1561c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ogc_positionname
+  module:
+    - user
+id: user.user.field_ogc_positionname
+field_name: field_ogc_positionname
+entity_type: user
+bundle: user
+label: Position
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,8 @@
+name: Drupal8OGC CSW
+description: Catalog Service for the Web
+package: Custom
+type: module
+version: 0.1
+core: 8.x
+dependencies:
+    - drupal8ogc

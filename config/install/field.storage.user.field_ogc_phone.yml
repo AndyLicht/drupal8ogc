@@ -1,0 +1,19 @@
+uuid: dd36a54f-a359-46dc-84f8-79cff1b7d909
+langcode: en
+status: true
+dependencies:
+  module:
+    - telephone
+    - user
+id: user.field_ogc_phone
+field_name: field_ogc_phone
+entity_type: user
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

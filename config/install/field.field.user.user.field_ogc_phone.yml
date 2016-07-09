@@ -1,0 +1,21 @@
+uuid: 02369209-43a4-4033-b897-b981ee346fb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ogc_phone
+  module:
+    - telephone
+    - user
+id: user.user.field_ogc_phone
+field_name: field_ogc_phone
+entity_type: user
+bundle: user
+label: Phone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

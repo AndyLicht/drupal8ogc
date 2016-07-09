@@ -1,0 +1,20 @@
+uuid: 5f2e1c13-f56d-4286-b39a-638b3ebcfa45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ogc_providername
+  module:
+    - user
+id: user.user.field_ogc_providername
+field_name: field_ogc_providername
+entity_type: user
+bundle: user
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

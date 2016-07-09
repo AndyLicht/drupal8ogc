@@ -1,0 +1,7 @@
+drupal8ogc_forms_settings:
+  path: '/drupal8ogc/settings'
+  defaults:
+    _form: 'Drupal\drupal8ogc\Controller\AdminForm'
+    _title: 'Configure Drupal 8 OGC Settings'
+  requirements:
+    _permission: 'access content'

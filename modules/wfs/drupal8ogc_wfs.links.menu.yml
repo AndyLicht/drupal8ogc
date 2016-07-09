@@ -1,0 +1,6 @@
+drupal8ogc_wfs.admin:
+  title: 'Drupal8 OGC Settings'
+  description: 'Base Module for agriculture simulations'
+  parent: system.admin_config_development
+  route_name: drupal8ogc_wfs_forms_settings
+  weight: 100
