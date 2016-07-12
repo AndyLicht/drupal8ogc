@@ -9,12 +9,15 @@ class WFS extends ControllerBase
     public function buildContent()
     {
         $responseXML = null;
-        switch (strtolower($_GET['request']))
+        $request = strtolower($_GET['request']);
+        switch ($request)
         {
             case NULL:
-               $responseXML = $this->setException(0);
+                $responseXML = $this->setException(0);
+                break;
             case 'getcapabilites':
-                $responseXML = $this->getCapabilities();
+                $responseXML = $this->getCapabilities($_GET['request']);
+                break;
         }
         
         
@@ -24,8 +27,8 @@ class WFS extends ControllerBase
         $response = new Response();
         $response->setContent($responseXML);
         $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/xml');
-        //$response->headers->set('Content-Type', 'text/html');
+        //$response->headers->set('Content-Type', 'application/xml');
+        $response->headers->set('Content-Type', 'text/html');
 
         
 
@@ -38,11 +41,11 @@ class WFS extends ControllerBase
         //Operations: GetCapabilities, DescribeFeatureType, GetFeatureType
     }
    
-    public function getCapabilities()
+    public function getCapabilities($request)
     {
         $responseXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
                         <note>
-                            <to>Tove</to>
+                            <to>".$request."</to>
                             <from>Jani</from>
                             <heading>Reminder</heading>
                             <body>Don't forget me this weekend!</body>
@@ -52,6 +55,7 @@ class WFS extends ControllerBase
    
     public function setException($i)
     {
+        var_dump("setException");
         switch($i)
         {
             case 0:
@@ -59,7 +63,9 @@ class WFS extends ControllerBase
                     <ExceptionReport version=\"1.0\">
                         <Exception exceptionCode=\"MissingParameterValue\" locator=\"request\"/>
                     </ExceptionReport>";
+                break;
         }
+        
         return $responseXML;
     }
     
@@ -85,7 +91,6 @@ class WFS extends ControllerBase
                     </ContactInfo>
                 </ServiceContact>
             </ServiceProvider>';
-        
         return $responseXML; 
     }
 }
