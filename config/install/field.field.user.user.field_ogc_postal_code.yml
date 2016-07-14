@@ -1,0 +1,20 @@
+uuid: b00816f8-a9b3-4149-a636-218866d43bf5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ogc_postal_code
+  module:
+    - user
+id: user.user.field_ogc_postal_code
+field_name: field_ogc_postal_code
+entity_type: user
+bundle: user
+label: 'Postal Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

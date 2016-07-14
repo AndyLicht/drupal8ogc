@@ -1,0 +1,20 @@
+uuid: c6ae33c2-8aeb-4733-a85d-f5fc84a69801
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ogc_administrative_area
+  module:
+    - user
+id: user.user.field_ogc_administrative_area
+field_name: field_ogc_administrative_area
+entity_type: user
+bundle: user
+label: 'Administrative Area'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
