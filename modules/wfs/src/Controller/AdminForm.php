@@ -36,19 +36,26 @@ class AdminForm extends ConfigFormBase
             '#title' => t('WFS'),
             '#group' => 'advanced',
         );
-        $form['base']['name'] = array(
-            '#type' => 'textfield',
-            '#title' => $this->t('Name'),
+        $form['base']['xmlheader'] = array(
+            '#type' => 'textarea',
+            '#title' => $this->t('actual XML-Header'),
+            '#default_value' => $config->get('xmlheader')
+        );
+        $form['base']['xmlend'] = array(
+            '#type' => 'textarea',
+            '#title' => $this->t('End of File'),
+            '#default_value' => $config->get('xmlend')
         );
         
         return parent::buildForm($form, $form_state);
     }
     
-    
-    
     public function submitForm(array &$form, FormStateInterface $form_state)
     {   
-        
+        $this->config('drupal8ogc_wfs.settings')
+            ->set('xmlheader',$form_state->getValue('xmlheader'))    
+            ->set('xmlend',$form_state->getValue('xmlend'))    
+            ->save();
         parent::submitForm($form, $form_state);
     }
     

@@ -36,11 +36,6 @@ class AdminForm extends ConfigFormBase
             '#title' => t('Base Settings'),
             '#group' => 'advanced',
         );
-        $form['base']['xmlheader'] = array(
-            '#type' => 'textarea',
-            '#title' => $this->t('actual XML-Header'),
-            '#default_value' => $config->get('xmlheader'),
-        );
         $form['base']['getprovider'] = array(
             '#type' => 'textfield',
             '#title' => $this->t('actual ServiceProvider'),

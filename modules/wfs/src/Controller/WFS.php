@@ -1,39 +1,38 @@
 <?php
 
 namespace Drupal\drupal8ogc_wfs\Controller;
+
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\Response;
+use Drupal\user\Entity\User;
 
 class WFS extends ControllerBase 
 {
     public function buildContent()
     {
         $responseXML = null;
+        $request = strtolower(filter_input(INPUT_GET,$_GET['request']));
         $request = strtolower($_GET['request']);
         switch ($request)
         {
             case NULL:
                 $responseXML = $this->setException(0);
                 break;
-            case 'getcapabilites':
-                $responseXML = $this->getCapabilities($_GET['request']);
+            case 'getcapabilities':
+                $responseXML = $this->getCapabilities();
                 break;
         }
         
+        //load Header
+        $xmlContent = $this->setHeader();
+        $xmlContent = $xmlContent.$responseXML;
         
-        
-        
-        
+        //create Response
         $response = new Response();
-        $response->setContent($responseXML);
+        $response->setContent($xmlContent);
         $response->setStatusCode(Response::HTTP_OK);
-        //$response->headers->set('Content-Type', 'application/xml');
-        $response->headers->set('Content-Type', 'text/html');
-
-        
-
-
-
+        $response->headers->set('Content-Type', 'application/xml');
+        //$response->headers->set('Content-Type', 'text/html');
         // prints the HTTP headers followed by the content
         return $response;
         
@@ -41,15 +40,17 @@ class WFS extends ControllerBase
         //Operations: GetCapabilities, DescribeFeatureType, GetFeatureType
     }
    
-    public function getCapabilities($request)
+    private function setHeader()
     {
-        $responseXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-                        <note>
-                            <to>".$request."</to>
-                            <from>Jani</from>
-                            <heading>Reminder</heading>
-                            <body>Don't forget me this weekend!</body>
-                        </note>";
+        $config = $this->config('drupal8ogc_wfs.settings');
+        $header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$config->get('xmlheader');
+        return $header;
+    }
+    
+    public function getCapabilities()
+    {
+        $responseXML = $this->getServiceProvider();
+        $responseXML = $responseXML.$this->getEnd();
         return $responseXML;
     }
    
@@ -73,8 +74,6 @@ class WFS extends ControllerBase
     {
         $config = $this->config('drupal8ogc.settings');
         $user = User::load($config->get('provider'));
-        
-        
         $responseXML = '
             <ServiceProvider>
                 <ProviderName>'.$user->get('field_ogc_providername')->value.'</ProviderName>
@@ -93,6 +92,13 @@ class WFS extends ControllerBase
             </ServiceProvider>';
         return $responseXML; 
     }
+    
+    private function getEnd()
+    {
+        //</wfsb:WFS_Simple_Capabilities>
+        $config = $this->config('drupal8ogc_wfs.settings');
+        return $config->get('xmlend');
+    }
 }
 
 /*
@@ -104,13 +110,13 @@ class WFS extends ControllerBase
 <ows:ContactInfo>
 <ows:Phone>
 <ows:Voice/>
-<ows:Facsimile/>
+<ows:Facsimile/>    FEHLT NOCH (Vorwahl?Ländercode?)
 </ows:Phone>
 <ows:Address>
-<ows:City>Hamburg</ows:City>
-<ows:AdministrativeArea/>
-<ows:PostalCode>21109</ows:PostalCode>
-<ows:Country>Germany</ows:Country>
+<ows:City>Hamburg</ows:City> Fehlt noch
+<ows:AdministrativeArea/> Fehlt noch
+<ows:PostalCode>21109</ows:PostalCode>Fehlt noch
+<ows:Country>Germany</ows:Country>Fehlt noch
 </ows:Address>
 </ows:ContactInfo>
 </ows:ServiceContact>
