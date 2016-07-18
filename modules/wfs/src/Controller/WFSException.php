@@ -24,6 +24,16 @@ class WFSException extends ControllerBase
                         <Exception exceptionCode=\"InvalidParameterValue\" locator=\"".$request."\"/>
                     </ExceptionReport>";
                 break;
+            case 2:
+                $responseXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+                    <ExceptionReport version=\"1.0\">
+                       <Exception exceptionCode=\"ResourceNotFound\">
+                          <ExceptionText>
+                          No given Content Type found.
+                          </ExceptionText>
+                       </Exception>
+                    </ExceptionReport>";
+                break;
         }
         return $responseXML;
     }

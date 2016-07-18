@@ -6,10 +6,9 @@ namespace Drupal\drupal8ogc_wfs\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
-
 class DescripeFeatureType extends ControllerBase 
 {
-
+    //eventuell durch getFieldMapByFieldType optimieren
     public static function descripefeaturetype($request) 
     { 
         $contentTypes = \Drupal::service('entity.manager')->getStorage('node_type')->loadMultiple();
@@ -23,12 +22,19 @@ class DescripeFeatureType extends ControllerBase
                 {
                     echo $contentType->id().'<br>'; //im XML dann name
                     echo $contentType->label().'<br>'; //im XML dann Title
-                    //echo $contentType->description().'<br>'; //im XML dann Abstract
+                    echo $contentType->getDescription().'<br>'; //im XML dann Abstract
                     array_push($layerList,$contentType->id());
                 }
             }
         }
         var_dump($layerList);
+        
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+        $test = field_ui_fields_list(); 
+        var_dump($test);
+        
     }
-
 }
