@@ -12,20 +12,28 @@ class WFS extends ControllerBase
         $possiblerequestoptions = ['getcapabilities','descripefeaturetype'];
         $responseXML = null;
         $request = strtolower(filter_input(INPUT_GET,'request'));
-        switch ($request)
+        $version = filter_input(INPUT_GET,'version');
+        if(!$version || $version != '1.1.0')
         {
-            case NULL:
-                $responseXML = self::setException(0,null);
-                break;
-            case 'getcapabilities':
-                $responseXML = GetCapabilities::getCapabilities();
-                break;
-            case 'descripefeaturetype':
-                $responseXML = DescripeFeatureType::descripefeaturetype($_GET);
-                break;
-            case !in_array($request,$possiblerequestoptions):
-                $responseXML = WFSException::setException(1,$request);
-                break;
+            $responseXML = WFSException::setException(3,$request);
+        }
+        else
+        {    
+            switch ($request)
+            {
+                case NULL:
+                    $responseXML = self::setException(0,null);
+                    break;
+                case 'getcapabilities':
+                    $responseXML = GetCapabilities::getCapabilities();
+                    break;
+                case 'descripefeaturetype':
+                    $responseXML = DescripeFeatureType::descripefeaturetype($_GET);
+                    break;
+                case !in_array($request,$possiblerequestoptions):
+                    $responseXML = WFSException::setException(1,$request);
+                    break;
+            }
         }
         
         //create Response

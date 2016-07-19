@@ -29,7 +29,18 @@ class WFSException extends ControllerBase
                     <ExceptionReport version=\"1.0\">
                        <Exception exceptionCode=\"ResourceNotFound\">
                           <ExceptionText>
-                          No given Content Type found.
+                            No given Content Type found.
+                          </ExceptionText>
+                       </Exception>
+                    </ExceptionReport>";
+                break;
+            case 3:
+                $responseXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+                    <ExceptionReport version=\"1.0\">
+                       <Exception exceptionCode=\"Version\">
+                          <ExceptionText>
+                            Version parameter has to be 1.1.0.
+                            Other Versions will be supported very soon.
                           </ExceptionText>
                        </Exception>
                     </ExceptionReport>";
